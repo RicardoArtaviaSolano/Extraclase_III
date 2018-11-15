@@ -1,74 +1,70 @@
 package com.example.ricardo.operaciones;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
-    EditText primerNumero = (EditText)findViewById(R.id.primerN);
-    EditText segundoNumero = (EditText)findViewById(R.id.segundoN);
-    TextView resultado = (EditText)findViewById(R.id.resultado);
-    int numero1 = Integer.parseInt(primerNumero.getText().toString());
-    int numero2 = Integer.parseInt(segundoNumero.getText().toString());
+public class MainActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
+        Button btnsum = (Button) findViewById(R.id.buttonsuma);
+        Button btnsub = (Button) findViewById(R.id.buttonresta);
+        Button btndiv = (Button) findViewById(R.id.buttondivision);
+        Button btnmul = (Button) findViewById(R.id.buttonmult);
+        final EditText n1 = (EditText) findViewById(R.id.num1);
+        final EditText n2 = (EditText) findViewById(R.id.num2);
+        final TextView result = (TextView) findViewById(R.id.resultado);
 
+        btnsum.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Float x = new Float (n1.getText().toString());
+                Float y = new Float (n2.getText().toString());
+                Float sum = x + y;
+                result.setText("El resultado de " + x + " + " + y + " = " + sum);}
+        });
 
+        btnsub.setOnClickListener(new OnClickListener() {
 
-    public void sumaClick(View v){
+            @Override
+            public void onClick(View v) {
+                Float x = new Float(n1.getText().toString());
+                Float y = new Float(n2.getText().toString());
+                Float sub = x - y;
+                result.setText("El resultado de  " + x + " - " + y + " = " + sub);
+            }
+        });
 
+        btndiv.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Float x = new Float(n1.getText().toString());
+                Float y = new Float(n2.getText().toString());
+                Float div = x / y;
+                result.setText("El resultado de " + x + " / " + y + " = " + div);
+            }
+        });
 
-        int suma = numero1 + numero2;
+        btnmul.setOnClickListener(new OnClickListener() {
 
-
-        resultado.setText(Integer.toString(suma));
-
-
-    }
-
-    public void restaClick(View v){
-
-
-
-        int resta = numero1 - numero2;
-
-
-        resultado.setText(Integer.toString(resta));
-
-
-    }
-
-    public void multiClick(View v){
-
-
-
-
-        int mult = numero1* numero2;
-
-        resultado.setText(Integer.toString(mult));
-
-
-    }
-    public void divClick(View v){
-
-
-
-        int div = numero1 / numero2;
-
-
-        resultado.setText(Integer.toString(div));
-
-
+            @Override
+            public void onClick(View v) {
+                Float x = new Float(n1.getText().toString());
+                Float y = new Float(n2.getText().toString());
+                Float mul = x * y;
+                result.setText("El resultado de " + x + " * " + y + " = " + mul);
+            }
+        });
     }
 
 }
